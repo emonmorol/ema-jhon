@@ -1,27 +1,24 @@
 import React, { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import Spinner from "../Spinner/Spinner";
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  // if (error) {
-  //   return (
-  //     <div>
-  //       <p>Error: {error.message}</p>
-  //     </div>
-  //   );
-  // }
-  // if (loading) {
-  //   return <p>Loading...</p>;
-  // }
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
+  if (loading) {
+    return <Spinner />;
+  }
   if (user) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
   console.log(user);
   const handleEmailBlur = (event) => {

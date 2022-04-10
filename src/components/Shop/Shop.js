@@ -8,7 +8,7 @@ import "./Shop.css";
 
 const Shop = () => {
   const [cart, setCart] = useState([]);
-  const [products, setProducts] = useProducts();
+  const [products] = useProducts();
 
   useEffect(() => {
     const storedCart = getStoredCart();

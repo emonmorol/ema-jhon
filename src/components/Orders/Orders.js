@@ -25,9 +25,9 @@ const Orders = () => {
           ></ReviewItem>
         ))}
       </div>
-      <div className="cart-container">
+      <div className="cart-container mt-5 mr-5">
         <Cart cart={cart}>
-          <Link to="/checkout">Proceed Checkout</Link>
+          <Link to="/shipment">Proceed Shipping</Link>
         </Cart>
       </div>
     </div>
