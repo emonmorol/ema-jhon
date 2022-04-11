@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  useAuthState,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
@@ -11,8 +12,9 @@ import "./Login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, , loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [user] = useAuthState(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   const navigate = useNavigate();

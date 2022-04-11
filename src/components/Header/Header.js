@@ -5,6 +5,7 @@ import auth from "../../firebase.init";
 import logo from "../../images/Logo.svg";
 import { signOut } from "firebase/auth";
 import "./Header.css";
+import CustomLink from "../CustomLink/CustomLink";
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -12,12 +13,16 @@ const Header = () => {
   return (
     <nav className="header">
       <img src={logo} alt="" />
-      <div>
-        <Link to="/shop">Shop</Link>
-        <Link to="/orders">Orders</Link>
-        <Link to="/inventory">Inventory</Link>
-        <Link to="/about">About</Link>
-        {user?.uid && <Link to="/user-information">Emon Morol</Link>}
+      <div className="flex">
+        <CustomLink to="/shop">Shop</CustomLink>
+        <CustomLink to="/orders">Orders</CustomLink>
+        <CustomLink to="/inventory">Inventory</CustomLink>
+        <CustomLink to="/about">About</CustomLink>
+        {user?.uid && (
+          <CustomLink to="/user-information">
+            {user?.displayName ? user.displayName : "User"}
+          </CustomLink>
+        )}
         {user?.uid ? (
           <Link
             to="/login"
@@ -28,7 +33,7 @@ const Header = () => {
             Logout
           </Link>
         ) : (
-          <Link to="/login">Login</Link>
+          <CustomLink to="/login">Login</CustomLink>
         )}
       </div>
     </nav>
