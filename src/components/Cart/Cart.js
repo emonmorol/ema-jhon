@@ -16,13 +16,32 @@ const Cart = (props) => {
   const grandTotal = total + shipping + tax;
   return (
     <div className="cart">
-      <h4>Order Summary</h4>
-      <p>Selected Items: {quantity}</p>
-      <p>Total price: ${total}</p>
-      <p>Total Shipping: ${shipping}</p>
-      <p>Tax: {tax}</p>
-      <h5>Grand Total: {grandTotal.toFixed(2)}</h5>
-      <button className="bg-cyan-500 px-2 py-1 mt-2 text-white rounded">
+      <h4 className="text-2xl font-medium text-center">Order Summary</h4>
+      <div className=" flex justify-between border-b-2 border-b-slate-300 pt-4">
+        <span className="font-medium">Selected Items:</span>
+        <span className="font-bold">{quantity}</span>
+      </div>
+      <hr />
+      <div className=" flex justify-between border-b-2 border-b-slate-300 pt-4">
+        <span className="font-medium">Total price:</span>
+        <span className="font-bold">${total}</span>
+      </div>
+      <hr />
+      <div className=" flex justify-between border-b-2 border-b-slate-300 pt-4">
+        <span className="font-medium">Total Shipping:</span>
+        <span className="font-bold">${shipping}</span>
+      </div>
+      <hr />
+      <div className=" flex justify-between border-b-2 border-b-slate-300 pt-4">
+        <span className="font-medium">Tax:</span>
+        <span className="font-bold">${tax}</span>
+      </div>
+      <hr />
+      <div className=" flex justify-between border-b-2 border-b-slate-300 pt-4">
+        <span className="font-bold text-xl">Grand Total:</span>
+        <span className="font-extrabold text-xl">${grandTotal.toFixed(2)}</span>
+      </div>
+      <button className="bg-cyan-500 px-2 py-1 text-white rounded w-full mt-5">
         {props.children}
       </button>
     </div>

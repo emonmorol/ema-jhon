@@ -8,8 +8,8 @@ const ReviewItem = (props) => {
   const { name, img, price, shipping, quantity } = product;
   return (
     <div className="review-item">
-      <div>
-        <img src={img} alt="" />
+      <div className="flex items-center">
+        <img className="w-full" src={img} alt="" />
       </div>
       <div className="review-item-details-container">
         <div className="review-item-details" title={name}>

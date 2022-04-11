@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Spinner from "../Spinner/Spinner";
@@ -10,6 +13,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -116,6 +121,7 @@ const Login = () => {
           <div className="border w-full"></div>
         </div>
         <button
+          onClick={() => signInWithGoogle()}
           className="group relative font-sans w-full flex justify-center items-center py-2 px-4 shadow-md border text-sm font-normal
               text-black rounded-md hover:shadow-inner focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
