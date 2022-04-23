@@ -4,6 +4,7 @@
   box-sizing: border-box;
   border-radius: 8px;
 }
-/* .toggle-link {
-  margin-top: 5px !important;
-} */
+@media screen and (max-width: 1100px) {
+}
+@media screen and (max-width: 640px) {
+}

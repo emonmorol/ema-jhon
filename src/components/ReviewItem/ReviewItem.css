@@ -35,3 +35,7 @@
   color: #eb5757;
   background-color: rgba(241, 80, 80, 0.287);
 }
+@media screen and (max-width: 1100px) {
+}
+@media screen and (max-width: 640px) {
+}

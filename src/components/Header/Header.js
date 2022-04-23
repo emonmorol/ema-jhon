@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <nav className="header">
       <img src={logo} alt="" />
-      <div className="flex">
+      <div className="flex anchors">
         <CustomLink to="/shop">Shop</CustomLink>
         <CustomLink to="/orders">Orders</CustomLink>
         <CustomLink to="/inventory">Inventory</CustomLink>
