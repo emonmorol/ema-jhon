@@ -9,7 +9,6 @@ import CustomLink from "../CustomLink/CustomLink";
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
   return (
     <nav className="header">
       <img src={logo} alt="" />
