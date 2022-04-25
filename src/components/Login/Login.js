@@ -17,9 +17,9 @@ const Login = () => {
   const [user] = useAuthState(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
 
-  const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
+  const navigate = useNavigate();
 
   if (loading) {
     return <Spinner />;
@@ -37,7 +37,7 @@ const Login = () => {
     event.preventDefault();
     signInWithEmailAndPassword(email, password);
     if (user.uid) {
-      navigate("/");
+      navigate(from);
     }
   };
 

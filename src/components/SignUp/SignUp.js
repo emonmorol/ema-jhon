@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 
 const SignUp = () => {
@@ -8,10 +11,13 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [mainError, setMainError] = useState("");
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
   const navigate = useNavigate();
 
   const [createUserWithEmailAndPassword, user] =
     useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   const handleEmailBlur = (event) => {
     setEmail(event.target.value);
@@ -24,7 +30,7 @@ const SignUp = () => {
   };
 
   if (user) {
-    navigate("/shop");
+    navigate(from);
   }
 
   const handleCreateUser = (event) => {
@@ -123,6 +129,7 @@ const SignUp = () => {
           <div className="border w-full"></div>
         </div>
         <button
+          onClick={() => signInWithGoogle()}
           className="group relative font-sans w-full flex justify-center items-center py-2 px-4 shadow-md border text-sm font-normal
               text-black rounded-md hover:shadow-inner focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-indigo-100"
         >

@@ -14,13 +14,15 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product?page=${page}&size=${size}`)
+    fetch(
+      `https://enigmatic-spire-27574.herokuapp.com/product?page=${page}&size=${size}`
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [page, size]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/productcount")
+    fetch("https://enigmatic-spire-27574.herokuapp.com/productcount")
       .then((res) => res.json())
       .then((data) => {
         const pages = Math.ceil(data / 10);

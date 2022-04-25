@@ -8,7 +8,7 @@ const useCart = () => {
     const storedCart = getStoredCart();
     const savedCart = [];
     const keys = Object.keys(storedCart);
-    fetch("http://localhost:5000/productByKeys", {
+    fetch("https://enigmatic-spire-27574.herokuapp.com/productByKeys", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
